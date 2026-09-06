@@ -1,0 +1,46 @@
+query_id,query,query_type,expected_product_name,notes
+Q001,stainless steel pipe,exact,stainless steel pipe 304,Exact product query
+Q002,stainles stel pipe,typo,stainless steel pipe 304,Multiple spelling mistakes
+Q003,stianless steel pipe,typo,stainless steel pipe 304,Misspelled stainless
+Q004,stainless steal pipe,typo,stainless steel pipe 304,Misspelled steel
+Q005,steel pipe,partial,carbon steel pipe,Partial product query
+Q006,stainless pipe,partial,stainless steel pipe 304,Missing product term
+Q007,industrial pipe stainless steel,different_word_order,stainless steel pipe 304,Same terms different order
+Q008,stainless industrial steel pipe,different_word_order,stainless steel pipe 304,Reordered product terms
+Q009,metal tube for industrial use,paraphrase,stainless steel pipe 304,Indirect description
+Q010,corrosion resistant metal pipe,paraphrase,stainless steel pipe 304,Describes product property
+Q011,pipe that does not rust,paraphrase,stainless steel pipe 304,Natural description
+Q012,need strong pipe for factory use,natural_query,stainless steel pipe 304,Natural B2B query
+Q013,industrial piping for chemical applications,natural_query,stainless steel pipe 304,Use-case query
+Q014,ss pipe,abbreviation,stainless steel pipe 304,Common abbreviation
+Q015,SS industrial pipe,abbreviation,stainless steel pipe 304,Abbreviation with context
+Q016,carbon steel pipe,exact,carbon steel pipe,Exact product query
+Q017,carbon stel pipe,typo,carbon steel pipe,Spelling mistake
+Q018,strong steel pipe,paraphrase,carbon steel pipe,Product characteristic
+Q019,industrial carbon piping,different_word_order,carbon steel pipe,Terminology variation
+Q020,steel pipe for construction,natural_query,carbon steel pipe,Application-based query
+Q021,safety gloves,exact,safety gloves,Exact product query
+Q022,protective hand equipment,synonym,safety gloves,Different words same meaning
+Q023,hand protection for workers,synonym,safety gloves,Semantic equivalent
+Q024,industrial hand safety gear,paraphrase,safety gloves,Indirect description
+Q025,saftey glovs,typo,safety gloves,Multiple spelling mistakes
+Q026,gloves for factory workers,natural_query,safety gloves,Natural user query
+Q027,cotton gloves for industrial work,attribute,cotton safety gloves,Material and use
+Q028,industrial cotton hand protection,attribute,cotton safety gloves,Material-based query
+Q029,protective gloves made of cotton,paraphrase,cotton safety gloves,Alternative wording
+Q030,cotton saftey glovs,typo,cotton safety gloves,Typo with attributes
+Q031,industrial safety helmet,exact,safety helmet,Exact product query
+Q032,head protection for workers,synonym,safety helmet,Semantic equivalent
+Q033,protective equipment for the head,paraphrase,safety helmet,Indirect description
+Q034,saftey helmat,typo,safety helmet,Spelling mistakes
+Q035,helmet for construction workers,natural_query,safety helmet,Application-based query
+Q036,pvc pipe,exact,pvc pipe,Exact product query
+Q037,plastic water pipe,paraphrase,pvc pipe,Material and application
+Q038,polyvinyl chloride pipe,synonym,pvc pipe,Expanded technical term
+Q039,pvc piping for water supply,natural_query,pvc pipe,Use-case query
+Q040,pvc peep,typo,pvc pipe,Spelling mistake
+Q041,electric motor,exact,electric motor,Exact product query
+Q042,industrial machine motor,paraphrase,electric motor,Semantic description
+Q043,motor for factory equipment,natural_query,electric motor,Application-based query
+Q044,eletric moter,typo,electric motor,Multiple spelling mistakes
+Q045,electrical industrial motor,different_word_order,electric motor,Word order variation

@@ -1,0 +1,36 @@
+query_id,original_query,corrected_query,expected_product,rank,hit@1,recall@5,recall@10,reciprocal_rank,top_result,top_score
+Q001,stainless steel pipe,stainless steel pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.785917341709137
+Q002,stainless steel pipe 304,stainless steel pipe 304,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8327610492706299
+Q003,stainles stel pipe,stainless steel pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.785917341709137
+Q004,stianless steel pipe,stainless steel pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.785917341709137
+Q005,stainless steal pipe,stainless steel pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.785917341709137
+Q006,stainless steel pipe 4 inch,stainless steel pipe 4 inch,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8092237114906311
+Q007,304 grade steel pipe,304 grade steel pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8160107135772705
+Q008,steel pipe,steel pipe,stainless steel pipe 304,,0,0,0,0.0,carbon steel pipe,0.7657939195632935
+Q009,stainless pipe,stainless pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.7783151865005493
+Q010,industrial pipe stainless steel,industrial pipe stainless steel,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8214049935340881
+Q011,stainless industrial steel pipe,stainless industrial steel pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8201872110366821
+Q012,corrosion resistant metal pipe,corrosion resin metal pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.65460604429245
+Q013,pipe that does not rust,pipe that does not rust,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.677420973777771
+Q014,need strong pipe for chemical plant,need strong pipe for chemicals plate,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.6423258185386658
+Q015,piping for food and beverage industry,shipping for food and beverage industrial,stainless steel pipe 304,,0,0,0,0.0,industrial bearing,0.6225869059562683
+Q016,ss pipe,ss pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.6838546991348267
+Q017,SS industrial pipe,SS industrial pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.7485769987106323
+Q018,ss304 pipe,304 pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.7883515954017639
+Q019,bulk stainless steel pipe supplier,bulk stainless steel pipe supplier,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8501033782958984
+Q020,1 inch stainless pipe,1 inch stainless pipe,stainless steel pipe 304,1.0,1,1,1,1.0,stainless steel pipe 304,0.8142066597938538
+Q021,carbon steel pipe,carbon steel pipe,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.8300398588180542
+Q022,carbon steel pipe IS 2062,carbon steel pipe IS 6202,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.7791107892990112
+Q023,carbon stel pipe,carbon steel pipe,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.8300398588180542
+Q024,carban steel pipe,carbon steel pipe,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.8300398588180542
+Q025,carbon steel pipe 2 inch,carbon steel pipe 2 inch,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.8531306982040405
+Q026,IS 2062 grade pipe,IS 6202 grade pipe,carbon steel pipe,,0,0,0,0.0,industrial bearing,0.6740386486053467
+Q027,strong steel pipe,strong steel pipe,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.6949837803840637
+Q028,industrial carbon piping,industrial carbon shipping,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.6576170921325684
+Q029,steel pipe for construction,steel pipe for construction,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.7619118690490723
+Q030,mild carbon steel pipe for structural use,mild carbon steel pipe for structural use,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.7939369678497314
+Q031,cs pipe,cs pipe,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.665296196937561
+Q032,carbon pipe 4 inch bulk order,carbon pipe 4 inch bulk orders,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.813110888004303
+Q033,piping for oil and gas pipelines,shipping for oil and gas pipelines,carbon steel pipe,,0,0,0,0.0,corrugated shipping box,0.6025608777999878
+Q034,carbon steel pipe near Salem,carbon steel pipe rear Salem,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.7365947961807251
+Q035,cheap carbon steel pipe 3 inch,cheap carbon steel pipe 3 inch,carbon steel pipe,1.0,1,1,1,1.0,carbon steel pipe,0.819426417350769

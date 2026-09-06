@@ -53,17 +53,16 @@ def search(query):
     by="score",
     ascending=False
     )
-    # print(results)
     return results
 #------------------------------Semantic Searching--------------------------
+#------------------------------Semantic Searching--------------------------
+
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-
-# Convert product names into a list
+# Product names
 product_names = df["product_name"].fillna("").tolist()
 
-
-# Create embeddings for all products
+# Whole-product embeddings
 product_embeddings = model.encode(
     product_names,
     normalize_embeddings=True
@@ -147,85 +146,196 @@ def searchTypos(query, threshold=70):
                 "score": score
             })
 
-    print(pd.DataFrame(results).sort_values(
-        by="score",
-        ascending=False
-    ))
     return pd.DataFrame(results).sort_values(
         by="score",
         ascending=False
     )
+def hybrid_search(
+    query,
+    top_k=5,
+    keyword_weight=0.3,
+    fuzzy_weight=0.5,
+    semantic_weight=0.2
+):
 
-def hybrid_search(query, top_k=5):
+    # -----------------------------------
+    # 1. Keyword Search
+    # -----------------------------------
 
-    # 1. Keyword / Exact matching
-    exact_results = search(query)
+    keyword_results = search(query)
 
-    # 2. Fuzzy / Typo matching
+    keyword_results = keyword_results[
+        ["product_id", "score"]
+    ].rename(
+        columns={"score": "keyword_score"}
+    )
+
+    keyword_results = keyword_results.drop_duplicates(
+        subset=["product_id"]
+    )
+    print(keyword_results)
+
+    # -----------------------------------
+    # 2. Fuzzy Search
+    # -----------------------------------
+
     fuzzy_results = searchTypos(query)
 
-    # 3. Semantic matching
+    fuzzy_results = fuzzy_results[
+        ["product_id", "score"]
+    ].rename(
+        columns={"score": "fuzzy_score"}
+    )
+
+    fuzzy_results["fuzzy_score"] = (
+        fuzzy_results["fuzzy_score"] / 100
+    )
+
+    fuzzy_results = fuzzy_results.drop_duplicates(
+        subset=["product_id"]
+    )
+    print(fuzzy_results)
+
+    # -----------------------------------
+    # 3. Semantic Search
+    # -----------------------------------
+
     semantic_results = semantic_search(
         query,
         top_k=20
     )
 
+    semantic_results = semantic_results[
+        ["product_id", "semantic_score"]
+    ]
+
+    semantic_results = semantic_results.drop_duplicates(
+        subset=["product_id"]
+    )
+
     # -----------------------------------
-    # UNION ALL product IDs
+    # UNION of all product IDs
     # -----------------------------------
 
     all_results = pd.concat(
         [
-            exact_results[["product_id"]],
+            keyword_results[["product_id"]],
             fuzzy_results[["product_id"]],
             semantic_results[["product_id"]]
         ],
         ignore_index=True
-    )
+    ).drop_duplicates()
 
     # -----------------------------------
-    # GROUP BY product_id
-    # COUNT occurrences
-    # ORDER BY count DESC
+    # Merge all scores
     # -----------------------------------
 
-    product_counts = (
-        all_results
-        .groupby("product_id")
-        .size()
-        .reset_index(name="match_count")
-        .sort_values(
-            by="match_count",
-            ascending=False
-        )
-    )
-
-    # -----------------------------------
-    # Join with original dataframe
-    # to get complete product details
-    # -----------------------------------
-
-    final_results = product_counts.merge(
-        df,
+    final_results = all_results.merge(
+        keyword_results,
         on="product_id",
         how="left"
     )
 
-    return final_results.head(top_k)
-query = "Stianles Steel Pipe"
+    final_results = final_results.merge(
+        fuzzy_results,
+        on="product_id",
+        how="left"
+    )
 
-results = hybrid_search(
-    query,
-    top_k=100
-)
+    final_results = final_results.merge(
+        semantic_results,
+        on="product_id",
+        how="left"
+    )
+
+    # Missing scores become 0
+    final_results = final_results.fillna(0)
+
+    # -----------------------------------
+    # Weighted Fusion
+    # -----------------------------------
+
+    final_results["final_score"] = (
+        final_results["keyword_score"] * keyword_weight
+        +
+        final_results["fuzzy_score"] * fuzzy_weight
+        +
+        final_results["semantic_score"] * semantic_weight
+    )
+    print(
+        final_results[
+            [
+                "product_id",
+                "keyword_score",
+                "fuzzy_score",
+                "semantic_score",
+                "final_score"
+            ]
+        ].sort_values(
+            "final_score",
+            ascending=False
+        ).head(30)
+    )
+
+    # -----------------------------------
+    # Rank results
+    # -----------------------------------
+
+    final_results = final_results.sort_values(
+        by="final_score",
+        ascending=False
+    )
+
+    # -----------------------------------
+    # Get product details
+    # -----------------------------------
+
+    final_results = final_results.merge(
+        df.drop(columns=["score"], errors="ignore"),
+        on="product_id",
+        how="left"
+    )
+   
+
+    return final_results.head(top_k)
+# query = "Stianles Steel Pipe"
+
+# results = hybrid_search(
+#     query,
+#     top_k=20
+# )
 
 # print(
 #     results[
 #         [
 #             "product_id",
 #             "product_name",
-#             "category",
-#             "match_count"
+#             "keyword_score",
+#             "fuzzy_score",
+#             "semantic_score",
+#             "final_score"
 #         ]
-#     ].to_string()
+#     ]
 # )
+query = "Stianles Steel Pipe"
+
+print("KEYWORD")
+print(
+    search(query)[
+        ["product_id", "product_name", "score"]
+    ].head(20)
+)
+
+print("\nFUZZY")
+print(
+    searchTypos(query)[
+        ["product_id", "product_name", "score"]
+    ].head(20)
+)
+
+print("\nSEMANTIC")
+print(
+    semantic_search(query, top_k=20)[
+        ["product_id", "product_name", "semantic_score"]
+    ].head(20)
+)

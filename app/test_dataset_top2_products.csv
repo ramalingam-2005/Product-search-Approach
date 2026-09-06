@@ -1,0 +1,36 @@
+query_id,query,query_type,expected_product_name,notes
+Q001,stainless steel pipe,exact,Stainless Steel Pipe 304,Exact product query
+Q002,stainless steel pipe 304,exact,Stainless Steel Pipe 304,Exact query with grade included
+Q003,stainles stel pipe,typo,Stainless Steel Pipe 304,Multiple spelling mistakes
+Q004,stianless steel pipe,typo,Stainless Steel Pipe 304,Misspelled "stainless"
+Q005,stainless steal pipe,typo,Stainless Steel Pipe 304,Misspelled "steel"
+Q006,stainless steel pipe 4 inch,attribute,Stainless Steel Pipe 304,Size-qualified query matching real SKU
+Q007,304 grade steel pipe,attribute,Stainless Steel Pipe 304,Grade-qualified query
+Q008,steel pipe,partial,Stainless Steel Pipe 304,"Ambiguous partial query; could also match Carbon Steel Pipe or MS Steel Plate - use for disambiguation testing"
+Q009,stainless pipe,partial,Stainless Steel Pipe 304,Missing "steel" term
+Q010,industrial pipe stainless steel,different_word_order,Stainless Steel Pipe 304,Same terms different order
+Q011,stainless industrial steel pipe,different_word_order,Stainless Steel Pipe 304,Reordered product terms
+Q012,corrosion resistant metal pipe,paraphrase,Stainless Steel Pipe 304,Describes stainless steel property indirectly
+Q013,pipe that does not rust,paraphrase,Stainless Steel Pipe 304,Natural-language property description
+Q014,need strong pipe for chemical plant,natural_query,Stainless Steel Pipe 304,Natural B2B use-case query
+Q015,piping for food and beverage industry,natural_query,Stainless Steel Pipe 304,Use-case query (304 grade is common in food-grade applications)
+Q016,ss pipe,abbreviation,Stainless Steel Pipe 304,Common trade abbreviation for stainless steel
+Q017,SS industrial pipe,abbreviation,Stainless Steel Pipe 304,Abbreviation with context
+Q018,ss304 pipe,abbreviation,Stainless Steel Pipe 304,Grade abbreviated and concatenated
+Q019,bulk stainless steel pipe supplier,natural_query,Stainless Steel Pipe 304,B2B procurement-style query
+Q020,1 inch stainless pipe,attribute,Stainless Steel Pipe 304,Size + partial product term
+Q021,carbon steel pipe,exact,Carbon Steel Pipe,Exact product query
+Q022,carbon steel pipe IS 2062,exact,Carbon Steel Pipe,Exact query with grade included
+Q023,carbon stel pipe,typo,Carbon Steel Pipe,Spelling mistake
+Q024,carban steel pipe,typo,Carbon Steel Pipe,Misspelled "carbon"
+Q025,carbon steel pipe 2 inch,attribute,Carbon Steel Pipe,Size-qualified query matching real SKU
+Q026,IS 2062 grade pipe,attribute,Carbon Steel Pipe,Grade-standard-qualified query
+Q027,strong steel pipe,paraphrase,Carbon Steel Pipe,Generic product characteristic (ambiguous with stainless/MS steel)
+Q028,industrial carbon piping,different_word_order,Carbon Steel Pipe,Terminology variation
+Q029,steel pipe for construction,natural_query,Carbon Steel Pipe,Application-based query
+Q030,mild carbon steel pipe for structural use,natural_query,Carbon Steel Pipe,Use-case query
+Q031,cs pipe,abbreviation,Carbon Steel Pipe,Common trade abbreviation for carbon steel
+Q032,carbon pipe 4 inch bulk order,natural_query,Carbon Steel Pipe,B2B procurement-style query with size
+Q033,piping for oil and gas pipelines,natural_query,Carbon Steel Pipe,Industry use-case query
+Q034,carbon steel pipe near Salem,natural_query,Carbon Steel Pipe,Location-qualified query (supplier in Salem stocks this)
+Q035,cheap carbon steel pipe 3 inch,natural_query,Carbon Steel Pipe,Price + size qualified query
